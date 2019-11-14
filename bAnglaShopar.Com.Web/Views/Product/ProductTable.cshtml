@@ -1,0 +1,39 @@
+﻿@model List<bAnglaShoper.ComEntities.Product>
+@{
+    ViewBag.Title = "ProductTable";
+}
+
+<h2>Product Table</h2>
+
+<div>
+    <form method="post" action="/Product/ProductTable">
+        <input name="Search" />
+        <button>Search</button>
+    </form>
+    <button>New</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <td>Product Name</td>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+         {
+            <tr>
+                <td>@product.Name</td>
+                <td>-</td>
+                <td>@product.Price</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>    
+         }
+    </tbody>
+    </table>
+
