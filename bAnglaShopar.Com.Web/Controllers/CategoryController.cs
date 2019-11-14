@@ -15,7 +15,7 @@ namespace bAnglaShopar.Com.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var categoryList = categoriesService.GetCategory();
+            var categoryList = categoriesService.GetCategories();
             return View(categoryList);
         }
 
@@ -29,7 +29,36 @@ namespace bAnglaShopar.Com.Web.Controllers
         public ActionResult Create(Category category)
         {
             categoriesService.SaveCategory(category);
-            return View();
+            return RedirectToAction("Index");
+        }
+
+        // Edit Category
+        [HttpGet]
+        public ActionResult Edit(int ID)
+        {
+            var category = categoriesService.GetCategory(ID);
+            return View(category);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Category category)
+        {
+            categoriesService.UpdateCategory(category);
+            return RedirectToAction("Index");
+        }
+        // Delete Category
+        [HttpGet]
+        public ActionResult Delete(int ID)
+        {
+            var category = categoriesService.GetCategory(ID);
+            return View(category);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Category category)
+        {           
+            categoriesService.DeleteCategory(category.ID);
+            return RedirectToAction("Index");
         }
     }
 }

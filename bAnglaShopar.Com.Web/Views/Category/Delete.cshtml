@@ -1,0 +1,15 @@
+﻿@model bAnglaShoper.ComEntities.Category
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1>Delete Category </h1>
+<h2>@Model.Name</h2>
+<h2>Are You sure you want to delete this category?</h2>
+
+<form method="post">
+    <input name="ID" value="@Model.ID" type="hidden" />
+    <button type="submit">Yes Delete</button>
+</form>
+<a href="/Category">Cancel</a>
+
