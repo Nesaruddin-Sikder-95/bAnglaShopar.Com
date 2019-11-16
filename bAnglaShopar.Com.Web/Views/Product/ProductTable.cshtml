@@ -28,8 +28,8 @@
                     <td>-</td>
                     <td>@product.Price</td>
                     <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button type="button" class="editBtn" data-id ="@product.ID">Edit</button>
+                        <button type="button" class="deleteBtn" data-id ="@product.ID">Delete</button>
                     </td>
                 </tr>
             }
@@ -59,6 +59,23 @@
     $("#newBtn").click(function () {      
         $.ajax({
             url: '/Product/Create',        
+        })
+            .done(function (response) {
+                $("#actionContainer").html(response);
+
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAIL")
+            });
+    });
+
+    // Edit button
+    $(".editBtn").click(function () {
+        $.ajax({
+            url: '/Product/Edit',
+            data: {
+                ID: $(this).attr('data-id')
+            }
         })
             .done(function (response) {
                 $("#actionContainer").html(response);

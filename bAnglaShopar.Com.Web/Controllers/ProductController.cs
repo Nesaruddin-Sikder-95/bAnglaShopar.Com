@@ -41,5 +41,21 @@ namespace bAnglaShopar.Com.Web.Controllers
             productsService.SaveProduct(product);
             return RedirectToAction("ProductTable");
         }
+
+        // For edit button
+        [HttpGet]
+        public ActionResult Edit(int ID)
+        {
+            var product = productsService.GetProduct(ID);
+            // we need only value not all page thats why use Partial keyword
+            return PartialView(product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            productsService.UpdateProduct(product);
+            return RedirectToAction("ProductTable");
+        }
     }
 }
