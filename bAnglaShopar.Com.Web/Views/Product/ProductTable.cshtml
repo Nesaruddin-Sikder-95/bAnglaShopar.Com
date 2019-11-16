@@ -37,6 +37,7 @@
     </table>
 </div>
 <script>
+    //Get Search result after click search button
     $("#searchBtn").click(function () {
         var searchValue = $("#searchTxt").val();
         $.ajax({
@@ -52,6 +53,20 @@
         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("FAIL")
         });
+    });
+
+    //Create Product show after click new button
+    $("#newBtn").click(function () {      
+        $.ajax({
+            url: '/Product/Create',        
+        })
+            .done(function (response) {
+                $("#actionContainer").html(response);
+
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAIL")
+            });
     });
 </script>
 

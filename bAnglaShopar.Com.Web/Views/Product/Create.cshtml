@@ -4,13 +4,32 @@
 }
 
 <h2>Create Product</h2>
-<form method="post">
+<form method="post" id="createProduct">
     <label>Name</label>
     <input name="Name" />
     <label>Description</label>
     <input name="Description" />
     <label>Price</label>
     <input name="Price" />
-    <button type="submit">Save</button>
+    <button type="button" id="saveBtn">Save</button>
 </form>
+
+<script>
+    $("#saveBtn").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/Product/Create',
+            data: $("#createProduct").serialize(),
+        })
+            .done(function (data) {
+                // Data Show after the saving new product
+                $("#tblContainer").html(data);
+                //Create Product hide after save new product
+                $("#actionContainer").html("");
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAILED");
+            })
+    });
+</script>
 
