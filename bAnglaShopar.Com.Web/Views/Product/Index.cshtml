@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Index";
 }
-@{ 
+<div id="tblContainer">
+    @{ 
     //Product table er sob puro page render hoye index method e chole ashbe
     Html.RenderAction("ProductTable");
 
@@ -10,5 +11,6 @@
     //Html.RenderAction("Create");
 
 }
+</div>
 
 

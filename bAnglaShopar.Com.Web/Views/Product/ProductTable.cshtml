@@ -3,37 +3,55 @@
     ViewBag.Title = "ProductTable";
 }
 
-<h2>Product Table</h2>
-
 <div>
     <form method="post" action="/Product/ProductTable">
-        <input name="Search" />
-        <button>Search</button>
+        <input name="Search" id="searchTxt"/>
+        <button type="button" id="searchBtn">Search</button>
     </form>
-    <button>New</button>
+    <button type="button" id="newBtn">New</button>
 </div>
-<table>
-    <thead>
-        <tr>
-            <td>Product Name</td>
-            <td>Category</td>
-            <td>Price</td>
-            <td>Action</td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model)
-         {
+<div>
+    <table>
+        <thead>
             <tr>
-                <td>@product.Name</td>
-                <td>-</td>
-                <td>@product.Price</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>    
-         }
-    </tbody>
+                <td>Product Name</td>
+                <td>Category</td>
+                <td>Price</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>-</td>
+                    <td>@product.Price</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
+</div>
+<script>
+    $("#searchBtn").click(function () {
+        var searchValue = $("#searchTxt").val();
+        $.ajax({
+            url: '/Product/ProductTable',
+            data: {
+                search: searchValue
+            }
+        })
+        .done(function (response) {
+                $("#tblContainer").html(response);
+                
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAIL")
+        });
+    });
+</script>
 

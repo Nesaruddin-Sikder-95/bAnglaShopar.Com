@@ -20,6 +20,11 @@ namespace bAnglaShopar.Com.Web.Controllers
         public ActionResult ProductTable(string search)
         {
             var products = productsService.GetProducts();
+            //get search value
+            if(string.IsNullOrEmpty(search) == false)
+            {
+                products = products.Where(p => p.Name != null && p.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
             return PartialView(products);
         }
 
