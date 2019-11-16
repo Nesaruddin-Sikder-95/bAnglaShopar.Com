@@ -85,5 +85,28 @@
                 alert("FAIL")
             });
     });
+
+    // Delete button
+    $(".deleteBtn").click(function () {
+        var confirmation = confirm("Are you sure to delete this product?");
+        if (confirmation)
+        {
+            $.ajax({
+                type: 'POST',
+                url: '/Product/Delete',
+                data: {
+                    ID: $(this).attr('data-id')
+                }
+            })
+                .done(function (response) {
+                    $("#tblContainer").html(response);
+
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("FAIL")
+                });
+        }
+       
+    });
 </script>
 

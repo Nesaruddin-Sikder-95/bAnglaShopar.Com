@@ -57,5 +57,14 @@ namespace bAnglaShopar.Com.Web.Controllers
             productsService.UpdateProduct(product);
             return RedirectToAction("ProductTable");
         }
+
+        // For Delete button       
+
+        [HttpPost]
+        public ActionResult Delete(int ID)
+        {
+            productsService.DeleteProduct(ID);
+            return RedirectToAction("ProductTable");
+        }
     }
 }
