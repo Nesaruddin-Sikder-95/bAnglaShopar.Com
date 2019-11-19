@@ -43,8 +43,8 @@
     <div class="boxed">
         <div id="site-header-wrap">
             <!-- Header -->
-            <header id="header" class="header clearfix">
-                <div class="container-fluid clearfix container-width-93" id="site-header-inner">
+            <header id="header" class="header header-container clearfix">
+                <div class="container clearfix" id="site-header-inner">
                     <div id="logo" class="logo float-left">
                         <a href="index.html" title="logo">
                             <img src="~/Content/images/logo.png" alt="image" width="107" height="24" data-retina="~/Content/images/logo@2x.png" data-width="107" data-height="24">
@@ -80,10 +80,10 @@
                     <div class="nav-wrap">
                         <nav id="mainnav" class="mainnav">
                             <ul class="menu">
-                                <li>
+                                <li class="active">
                                     <a href="index.html">HOME</a>
                                     <ul class="submenu">
-                                        <li><a href="index.html">Homepage Style 1</a></li>
+                                        <li class="active"><a href="index.html">Homepage Style 1</a></li>
                                         <li><a href="index-v2.html">Homepage Style 2</a></li>
                                         <li><a href="index-v3.html">Homepage Style 3</a></li>
                                         <li><a href="index-v4.html">Homepage Style 4</a></li>
@@ -95,13 +95,13 @@
                                         <li><a href="index-v10.html">Homepage Style 10</a></li>
                                     </ul>
                                 </li>
-                                <li class="active">
+                                <li>
                                     <a href="shop-3col.html">SHOP</a>
                                     <ul class="submenu">
                                         <li>
                                             <a href="shop-3col.html">Shop Layouts</a>
                                             <ul class="submenu">
-                                                <li class="active"><a href="shop-3col.html">Three Columns</a></li>
+                                                <li><a href="shop-3col.html">Three Columns</a></li>
                                                 <li><a href="shop-4col.html">Four Columns</a></li>
                                                 <li><a href="shop-5col.html">Five Columns</a></li>
                                                 <li><a href="shop-3col-slide.html">Slidebar Three Columns</a></li>
@@ -152,7 +152,8 @@
                     </div><!-- /.nav-wrap -->
                 </div><!-- /.container-fluid -->
             </header><!-- /header -->
-        </div><!-- /.site-header-wrap -->
+        </div><!-- /#site-header-wrap -->
+
 
         @RenderBody()
 
@@ -188,7 +189,6 @@
                 </div>
             </div>
         </section><!-- /.mail-chimp -->
-
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
