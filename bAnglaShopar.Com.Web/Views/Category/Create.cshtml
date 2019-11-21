@@ -10,6 +10,22 @@
     <label>Description</label>
     <input name="Description" />
     <br />
+    <label>Image</label>
+    <input name="Image" type="file" id="uploadImage" accept=".png, .jpg"/>
+    <br/>
     <button type="submit">Save</button>
 </form>
+
+<script>
+    $("#uploadImage").change(function () {
+        var element = this;
+        var formData = new FormData();
+
+        var totalFiles = element.files.length;
+        for (var i = 0; i <= totalFiles; i++) {
+            var file = element.files[i];
+            formData.append("Photo", file);
+        }
+    });
+</script>
 
