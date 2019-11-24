@@ -11,8 +11,14 @@
     <input name="Description" />
     <br />
     <label>Image</label>
-    <input name="Image" type="file" id="uploadImage" accept=".png, .jpg"/>
-    <br/>
+    <input name="ImageURL" id="ImageURL" type="hidden" />
+    <input name="Image" type="file" id="uploadImage" accept=".png, .jpg" />
+    <br />
+
+    <div class="thumb">
+        <img id="CategoryImage" />
+    </div>
+
     <button type="submit">Save</button>
 </form>
 
@@ -26,6 +32,25 @@
             var file = element.files[i];
             formData.append("Photo", file);
         }
+
+        $.ajax({
+            type: 'POST',
+            url: '/Shared/UploadImage',
+            dataType: 'json',
+            data: formData,
+            contentType: false,
+            processData: false
+            
+        })
+            .done(function (response) {
+                if (response.Success == true) {
+                    $("#CategoryImage").attr("src", response.ImageURL);
+                    $("#ImageURL").val(response.ImageURL);
+                }
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAILED");
+            })
     });
 </script>
 

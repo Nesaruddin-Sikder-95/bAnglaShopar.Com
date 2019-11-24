@@ -1,4 +1,6 @@
-﻿using System;
+﻿using bAnglaShopar.Com.Web.ModelView;
+using bAnglaShoper.Com.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,14 @@ namespace bAnglaShopar.Com.Web.Controllers
 {
     public class HomeController : Controller
     {
+        CategoriesService categoriesService = new CategoriesService();
+
         public ActionResult Index()
         {
-            return View();
+            HomeModelView homeModel = new HomeModelView();
+            homeModel.categoris = categoriesService.GetCategories();
+
+            return View(homeModel);
         }
 
         public ActionResult About()

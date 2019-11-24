@@ -12,13 +12,15 @@ namespace bAnglaShopar.Com.Web.Controllers
         public JsonResult UploadImage()
         {
             JsonResult result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
             try
             {
                 var file = Request.Files[0];
                 var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 var path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
                 file.SaveAs(path);
-                result.Data = new { Success = true, ImageURL = path };
+                result.Data = new { Success = true, ImageURL = string.Format("/Content/images/{0}" , fileName)};
                 
 
             }
