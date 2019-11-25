@@ -1,4 +1,5 @@
-﻿using bAnglaShoper.Com.Services;
+﻿using bAnglaShopar.Com.Web.ModelView;
+using bAnglaShoper.Com.Services;
 using bAnglaShoper.ComEntities;
 using System;
 using System.Collections.Generic;
@@ -31,14 +32,25 @@ namespace bAnglaShopar.Com.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            CategoriesService categoriesService = new CategoriesService();
+            var categories = categoriesService.GetCategories();
             // we need only value not all page thats why use Partial keyword
-            return PartialView();
+            return PartialView(categories);
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(CategoryViewModel model)
         {
-            productsService.SaveProduct(product);
+            CategoriesService categoriesService = new CategoriesService();
+
+            var newProduct = new Product();
+            newProduct.Name = model.Name;
+            newProduct.Description = model.Description;
+            newProduct.Price = model.Price;
+            //newProduct.CategoryID = model.CategoryID;
+            newProduct.Category = categoriesService.GetCategory(model.CategoryID);
+
+            productsService.SaveProduct(newProduct);
             return RedirectToAction("ProductTable");
         }
 

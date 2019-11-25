@@ -25,7 +25,16 @@
             {
                 <tr>
                     <td>@product.Name</td>
-                    <td>-</td>
+                    <td>
+                        @if (product.Category != null)
+                        {
+                            <text>@product.Category.Name</text>
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
                     <td>@product.Price</td>
                     <td>
                         <button type="button" class="editBtn" data-id ="@product.ID">Edit</button>

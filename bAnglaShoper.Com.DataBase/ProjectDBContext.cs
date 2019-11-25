@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace bAnglaShoper.Com.DataBase
 {
-    public class ProjectDBContext : DbContext
+    public class ProjectDBContext : DbContext,IDisposable
     {
         public ProjectDBContext() : base ("ProjectConnection")
         {

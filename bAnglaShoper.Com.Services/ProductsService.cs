@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace bAnglaShoper.Com.Services
 {
@@ -23,9 +24,12 @@ namespace bAnglaShoper.Com.Services
         //All Products
         public List<Product> GetProducts()
         {
+            //var context = new ProjectDBContext();
+            //return context.Products.ToList();
+
             using (var context = new ProjectDBContext())
             {
-                return context.Products.ToList();
+                return context.Products.Include(x=> x.Category).ToList();
                 
             }
            
@@ -34,6 +38,9 @@ namespace bAnglaShoper.Com.Services
         {
             using (var context = new ProjectDBContext())
             {
+                // jehetu akoi category bar bar notun kore create hoy tai ata unchange kore dite hobe
+                context.Entry(product.Category).State = System.Data.Entity.EntityState.Unchanged;
+
                 //Add Product
                 context.Products.Add(product);
                 //Save Changes
