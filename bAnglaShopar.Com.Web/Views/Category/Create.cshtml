@@ -3,25 +3,28 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create Category</h2>
-<form method="post">
-    <label>Name</label>
-    <input name="Name" />
-    <label>Description</label>
-    <input name="Description" />
-    <br />
-    <label>Image</label>
-    <input name="ImageURL" id="ImageURL" type="hidden" />
-    <input name="Image" type="file" id="uploadImage" accept=".png, .jpg" />
-    <br />
 
+<form method="post" class="container">
+    <h2>Create Category</h2>
+    <div class="form-group">
+        <label>Name</label>
+        <input name="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input name="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Image</label>
+        <input name="ImageURL" id="ImageURL" type="hidden" />
+        <input name="Image" type="file" id="uploadImage" accept=".png, .jpg" class="form-control"/>
+    </div>
     <div class="thumb">
         <img id="CategoryImage" />
     </div>
-
-    <button type="submit">Save</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
-
+<br />
 <script>
     $("#uploadImage").change(function () {
         var element = this;

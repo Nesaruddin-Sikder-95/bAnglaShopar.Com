@@ -5,45 +5,57 @@
 
 <div>
     <form method="post" action="/Product/ProductTable">
-        <input name="Search" id="searchTxt"/>
-        <button type="button" id="searchBtn">Search</button>
+        <br />
+        <div class="input-group">
+            
+            <input name="Search" id="searchTxt" aria-describedby="button-addon4" class="form-control" placeholder="search product......." />
+            <div class="input-group-append" id="button-addon4">
+                <button type="button" id="searchBtn" class="btn btn-info">Search</button>
+                <button type="button" id="newBtn" class="btn btn-primary">New</button>
+            </div>
+        </div>
     </form>
-    <button type="button" id="newBtn">New</button>
 </div>
+<br />
 <div>
-    <table>
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
-                <td>Product Name</td>
-                <td>Category</td>
-                <td>Price</td>
-                <td>Action</td>
+                <th scope="col">ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var product in Model)
             {
-                <tr>
-                    <td>@product.Name</td>
-                    <td>
-                        @if (product.Category != null)
-                        {
-                            <text>@product.Category.Name</text>
-                        }
-                        else
-                        {
-                            <text>-</text>
-                        }
-                    </td>
-                    <td>@product.Price</td>
-                    <td>
-                        <button type="button" class="editBtn" data-id ="@product.ID">Edit</button>
-                        <button type="button" class="deleteBtn" data-id ="@product.ID">Delete</button>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="row">@product.ID</th>
+                <td>@product.Name</td>
+                <td>
+                    @if (product.Category != null)
+                    {
+                        <text>@product.Category.Name</text>
+                    }
+                    else
+                    {
+                        <text>-</text>
+                    }
+                </td>
+                <td>@product.Price</td>
+                <td>
+                    <button type="button" class="editBtn" data-id="@product.ID">Edit</button>
+                    <button type="button" class="deleteBtn" data-id="@product.ID">Delete</button>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
+
+    
 </div>
 <script>
     //Get Search result after click search button

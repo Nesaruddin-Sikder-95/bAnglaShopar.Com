@@ -2,18 +2,22 @@
 @{
     ViewBag.Title = "Index";
 }
-<div id="tblContainer">
-    @{ 
-    //Product table er sob puro page render hoye index method e chole ashbe
-    Html.RenderAction("ProductTable");
 
-    //Create Table er sob puro page render hoye index method e chole ashbe
-    //Html.RenderAction("Create");
+<div class="container">
+    <div id="tblContainer">
+        @{
+            //Product table er sob puro page render hoye index method e chole ashbe
+            Html.RenderAction("ProductTable");
 
-}
-</div>
-<div id="actionContainer">
+            //Create Table er sob puro page render hoye index method e chole ashbe
+            //Html.RenderAction("Create");
 
+        }
+    </div>
+    <hr />
+    <div id="actionContainer">
+
+    </div>
 </div>
 
 
